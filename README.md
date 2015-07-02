@@ -1,9 +1,8 @@
 # GettingStartedWithFusionPython
-  These are the python files I used in my getting started with Fusion's API video
+YouTube video citing these scripts is here:  http://youtu.be/Roe2TRBY6Ko
 
-The YouTube Getting Started with Python and the Fusion API is posted here:  http://youtu.be/Roe2TRBY6Ko
-
-The final script with resutls is posted here:
+The completed Fibonacci script Result is posted here:
+  GitHub: https://github.com/MichaelAubry/Fusion360.git
   Fusion Gallery: https://fusion360.autodesk.com/projects/horn-of-fibonacci
   YouTube: https://youtu.be/5wj6zj4-iB0
-  GitHub: https://github.com/MichaelAubry/Fusion360.git
+  
