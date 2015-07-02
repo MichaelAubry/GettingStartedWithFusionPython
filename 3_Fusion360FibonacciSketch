@@ -1,0 +1,74 @@
+#This Script Creates a sketch on the XY plane and plots the Fibonacci Sequence as a spline
+
+import adsk.core, adsk.fusion
+
+app = adsk.core.Application.get()
+ui = app.userInterface
+        
+design = app.activeProduct
+
+# Get the root component of the active design.
+rootComp = design.rootComponent
+
+# Create a new sketch on the xy plane.
+sketches = rootComp.sketches
+xyPlane = rootComp.xYConstructionPlane
+sketch = sketches.add(xyPlane)
+
+# Create an object collection for the points.
+points = adsk.core.ObjectCollection.create()  
+
+#Starting Points
+x1 = 1
+x2 = 1
+
+Steps = 10 #How many fibonacci steps to go through
+R = Steps - 2
+
+points.add(adsk.core.Point3D.create(0, 0, 0)) # This plots the origin (Note: this line wasn't included in the video - sorry!)
+
+#First Coordainte
+xCoord = 1
+yCoord = 1
+
+points.add(adsk.core.Point3D.create(xCoord, yCoord, 0)) # This plots the first coordinate
+
+#2nd Coordiante
+xCoord = xCoord + 1
+yCoord = yCoord
+
+points.add(adsk.core.Point3D.create(xCoord, yCoord, 0)) # This plots the 2nd coordinate
+
+#For Loop Code reference
+#https://www.youtube.com/watch?v=9LgyKiq_hU0
+
+# Ranges to determine which direciton the next Fibonacci point will be ploted.
+Bin1 = range(0,R,4)
+Bin2 = range(1,R,4)
+Bin3 = range(2,R,4)
+Bin4 = range(3,R,4)
+
+for i in range(R):
+    x3 = x1+x2
+    x1 = x2
+    x2 = x3
+
+    if i in Bin1:
+        xCoord = xCoord
+        yCoord = yCoord +x2
+        points.add(adsk.core.Point3D.create(xCoord, yCoord, 0))
+    if i in Bin2:
+        xCoord = xCoord -x2
+        yCoord = yCoord
+        points.add(adsk.core.Point3D.create(xCoord, yCoord, 0))
+    if i in Bin3:
+        xCoord = xCoord
+        yCoord = yCoord -x2
+        points.add(adsk.core.Point3D.create(xCoord, yCoord, 0))
+    if i in Bin4:
+        xCoord = xCoord +x2
+        yCoord = yCoord
+        points.add(adsk.core.Point3D.create(xCoord, yCoord, 0))
+
+# Create the spline.
+sketch.sketchCurves.sketchFittedSplines.add(points)
