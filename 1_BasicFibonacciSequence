@@ -9,6 +9,9 @@ fib1 = 1
 print fib
 print fib1
 
+#For Loop Code reference
+#https://www.youtube.com/watch?v=9LgyKiq_hU0
+
 for i in range(R):
     fib2 = fib + fib1
     fib = fib1
