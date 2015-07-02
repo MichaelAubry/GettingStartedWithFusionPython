@@ -1,0 +1,50 @@
+
+x1 = 1
+x2 = 1
+
+Steps = 10 #How many fibonacci steps to go through
+R = Steps - 2
+
+print x1
+print x2
+
+xCoord = 0
+yCoord = 0
+
+print '['+str(xCoord)+','+str(yCoord)+']'
+
+xCoord = 1
+yCoord = 0
+
+print '['+str(xCoord)+','+str(yCoord)+']'
+
+#For Loop Code reference
+#https://www.youtube.com/watch?v=9LgyKiq_hU0
+
+Bin1 = range(0,R,4)
+Bin2 = range(1,R,4)
+Bin3 = range(2,R,4)
+Bin4 = range(3,R,4)
+
+for i in range(R):
+    x3 = x1+x2
+    x1 = x2
+    x2 = x3
+    print x2
+
+    if i in Bin1:
+        xCoord = xCoord
+        yCoord = yCoord +x2
+        print '['+str(xCoord)+','+str(yCoord)+']'
+    if i in Bin2:
+        xCoord = xCoord -x2
+        yCoord = yCoord
+        print '['+str(xCoord)+','+str(yCoord)+']'
+    if i in Bin3:
+        xCoord = xCoord
+        yCoord = yCoord -x2
+        print '['+str(xCoord)+','+str(yCoord)+']'
+    if i in Bin4:
+        xCoord = xCoord +x2
+        yCoord = yCoord
+        print '['+str(xCoord)+','+str(yCoord)+']'
